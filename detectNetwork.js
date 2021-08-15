@@ -14,7 +14,7 @@ var detectNetwork = function(cardNumber) {
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
-  // Once you've read this, go ahead and try to implement this function, then return to the console.
+
   if (cardNumber[0] + cardNumber[1] === '38' || cardNumber[0] + cardNumber[1] === '39') {
     if (cardNumber.length === 14) {
       return 'Diner\'s Club';
@@ -30,13 +30,33 @@ var detectNetwork = function(cardNumber) {
       return 'Visa';
     }
   }
-  if (cardNumber[0] === '5' && cardNumber[1] === '1' || cardNumber[1] === '2' ||
-   cardNumber[1] === '3' || cardNumber[1] === '4' || cardNumber[1] === '5') {
+  var masterPrefix = ['51', '52', '53', '54', '55'];
+  var masterActual = cardNumber.substring(0, 2);
+
+  if (masterPrefix.indexOf(masterActual) !== -1) {
     if (cardNumber.length === 16) {
       return 'MasterCard';
     }
   }
+  var discoverPrefix = ['644', '645', '646', '647', '648', '649'];
+  var discoverActual = cardNumber.substring(0, 3);
+  if (discoverPrefix.indexOf(discoverActual) !== -1 || cardNumber.substring(0, 4) === '6011' ||
+      cardNumber.substring(0, 2) === '65') {
+
+    if (cardNumber.length === 16 || cardNumber.length === 19) {
+      return 'Discover';
+    }
+  }
+  var maestroPrefix = ['5018', '5020', '5038', '6304'];
+  var maestroActual = cardNumber.substring(0, 4);
+
+  if (maestroPrefix.indexOf(maestroActual) !== -1) {
+    if (cardNumber.length >= 12 && cardNumber.length <= 19) {
+      return 'Maestro';
+    }
+  }
 
 };
+
 
 
