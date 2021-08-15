@@ -153,7 +153,7 @@ describe('Discover', function () {
     (function(currentPrefix) {
       currentPrefix = currentPrefix.toString();
       it('has a prefix of ' + currentPrefix + ' and a length of 16', function () {
-        detectNetwork(currentPrefix + '01234567890123').should.equal('Discover');
+        detectNetwork(currentPrefix + '0123456789012').should.equal('Discover');
       });
       it('has a prefix of ' + currentPrefix + ' and a length of 19', function () {
         detectNetwork(currentPrefix + '0123456789012345').should.equal('Discover');
@@ -168,7 +168,7 @@ describe('Maestro', function () {
 
   var maestroPrefix = ['5018', '5020', '5038', '6304'];
 
-  for (var i = 0; i < maestroPrefix.length - 1; i++) {
+  for (var i = 0; i < maestroPrefix.length; i++) {
     (function (currentPrefix) {
       currentPrefix = currentPrefix.toString();
       it('has a prefix of ' + currentPrefix + ' and a length of 12', function () {
@@ -224,7 +224,7 @@ describe('China UnionPay', function () {
     })(prefix);
   }
 
-  for (var prefix = 624; prefix <= 625; prefix++) {
+  for (var prefix = 624; prefix <= 626; prefix++) {
     (function (currentPrefix) {
       currentPrefix = currentPrefix.toString();
       it('has a prefix of ' + currentPrefix + ' and a length of 16', function () {
@@ -268,7 +268,7 @@ describe('Switch', function () {
 
   var switchPrefix6 = ['564182', '633110'];
 
-  for (var i = 0; i < switchPrefix4.length - 1; i++) {
+  for (var i = 0; i < switchPrefix4.length; i++) {
     (function (currentPrefix) {
 
       it('has a prefix of ' + currentPrefix + ' and a length of 16', function () {
@@ -283,17 +283,17 @@ describe('Switch', function () {
     })(switchPrefix4[i]);
   }
 
-  for (var i = 0; i < switchPrefix6.length - 1; i++) {
+  for (var i = 0; i < switchPrefix6.length; i++) {
     (function (currentPrefix) {
       var currentPrefix = currentPrefix.toString();
       it('has a prefix of ' + currentPrefix + ' and a length of 16', function () {
         detectNetwork(currentPrefix + '0123456789').should.equal('Switch');
       });
       it('has a prefix of ' + currentPrefix + ' and a length of 18', function () {
-        detectNetwork(currentPrefix + '0123456789012').should.equal('Switch');
+        detectNetwork(currentPrefix + '012345678901').should.equal('Switch');
       });
       it('has a prefix of ' + currentPrefix + ' and a length of 19', function () {
-        detectNetwork(currentPrefix + '01234567890123').should.equal('Switch');
+        detectNetwork(currentPrefix + '0123456789012').should.equal('Switch');
       });
     })(switchPrefix6[i]);
   }

@@ -27,7 +27,7 @@ var detectNetwork = function(cardNumber) {
   }
   var switchPrefix = ['4903', '4905', '4911', '4936', '564182', '633110', '6333', '6759'];
 
-  for (var i = 0; i < switchPrefix.length - 1; i++) {
+  for (var i = 0; i < switchPrefix.length; i++) {
     if (switchPrefix.indexOf(cardNumber.substring(0, 4)) !== -1 ||
     switchPrefix.indexOf(cardNumber.substring(0, 6)) !== -1) {
       if (cardNumber.length === 16 || cardNumber.length === 18 || cardNumber.length === 19) {
@@ -83,7 +83,7 @@ var detectNetwork = function(cardNumber) {
   }
 
   for (var i = 6282; i <= 6288; i++) {
-    if (i.toString() === cardNumber.substring(0, 5)) {
+    if (i.toString() === cardNumber.substring(0, 4)) {
       if (cardNumber.length >= 16 && cardNumber.length <= 19) {
         return 'China UnionPay';
       }
